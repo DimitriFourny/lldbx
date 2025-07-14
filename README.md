@@ -48,7 +48,3 @@ echo 'command script import "~/lldbx.py"' > ~/.lldbinit
 - Launch LLDB and load lldbx extensions as described in the documentation.
 - Use the enhanced commands to debug your macOS or iOS applications more efficiently.
 
-
-## Documentation
-
-See the [lldbx.html](lldbx.html) file for detailed documentation, command reference, and examples.
