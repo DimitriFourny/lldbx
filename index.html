@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LLDBX - LLDB eXtended</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-gray-100 min-h-screen text-gray-800">
+  <div class="max-w-4xl mx-auto py-12 px-4">
+    <header class="mb-10 text-center">
+      <h1 class="text-5xl font-extrabold text-blue-700 mb-2 tracking-tight">LLDBX</h1>
+      <h2 class="text-xl font-semibold text-blue-500 mb-4">LLDB eXtended for macOS &amp; iOS</h2>
+      <p class="text-lg text-gray-700 mb-2">Supercharge your LLDB experience with advanced commands, colorized output, and structure introspection. No dependencies required.</p>
+      <div class="flex justify-center gap-4 mt-4 mb-4">
+        <span class="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">macOS</span>
+        <span class="inline-flex items-center px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">iOS</span>
+      </div>
+      <a href="https://github.com/DimitriFourny/lldbx" target="_blank" rel="noopener" class="inline-block mt-2 px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow hover:bg-blue-700 transition">View on GitHub</a>
+    </header>
+    <section class="bg-white rounded-xl shadow p-8 mb-8">
+      <h3 class="text-2xl font-bold text-blue-600 mb-4">Installation</h3>
+      <pre class="bg-gray-100 rounded p-2 text-sm">cd
+wget https://raw.githubusercontent.com/DimitriFourny/lldbx/refs/heads/main/lldbx.py
+echo 'command script import "~/lldbx.py"' > ~/.lldbinit</pre>
+      <h3 class="text-2xl font-bold text-blue-600 mb-4 mt-4">Features</h3>
+      <ul class="list-disc pl-6 text-gray-800 space-y-2 mb-6">
+        <li>Analyze functions with readable disassembly and comments</li>
+        <li>Colorized output for registers, code, and memory</li>
+        <li>Inspect class/struct offsets and memory regions</li>
+        <li>Breakpoint, hexdump, and pointer utilities</li>
+        <li>Works out-of-the-box on macOS and iOS targets</li>
+      </ul>
+      <table class="min-w-full text-left border rounded overflow-hidden">
+        <thead>
+          <tr class="bg-blue-100">
+            <th class="py-2 px-3 font-semibold">Command</th>
+            <th class="py-2 px-3 font-semibold">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="py-1 px-3">analyze</td><td class="py-1 px-3">Analyze a function and show a more readable disassembled version.</td></tr>
+          <tr><td class="py-1 px-3">br</td><td class="py-1 px-3">Add a breakpoint on an address or a symbol.</td></tr>
+          <tr><td class="py-1 px-3">hexdump</td><td class="py-1 px-3">Hexadecimal dump.</td></tr>
+          <tr><td class="py-1 px-3">conf</td><td class="py-1 px-3">Configure global settings.</td></tr>
+          <tr><td class="py-1 px-3">memset</td><td class="py-1 px-3">memset equivalent primitive.</td></tr>
+          <tr><td class="py-1 px-3">memcpy</td><td class="py-1 px-3">memcpy equivalent primitive.</td></tr>
+          <tr><td class="py-1 px-3">nopac</td><td class="py-1 px-3">Remove PAC from a pointer.</td></tr>
+          <tr><td class="py-1 px-3">poffsets</td><td class="py-1 px-3">Print class and structure offsets.</td></tr>
+          <tr><td class="py-1 px-3">shared_cache</td><td class="py-1 px-3">Display information about the shared cache.</td></tr>
+          <tr><td class="py-1 px-3">telescope</td><td class="py-1 px-3">Dereference the addresses.</td></tr>
+          <tr><td class="py-1 px-3">xinfo</td><td class="py-1 px-3">Display information about an address.</td></tr>
+        </tbody>
+      </table>
+      <div class="mt-8">
+        <h4 class="text-lg font-semibold text-blue-600 mb-2">Example Output</h4>
+        <div class="rounded-lg p-4 text-sm overflow-x-auto" style="background-color: #2c2c2c; color: #d9d9d9">
+<pre><p>------------------------------------------------------------------- <span style="color: rgb(108, 153, 187);">registers</span> --</p><p><span style="color: #929292">x8</span> : 0x0</p><p><span style="color: rgb(126, 142, 80);">sp</span> : 0x16fdfeea0</p><p>----------------------------------------------------------------------- <span style="color: rgb(108, 153, 187);">stack</span> --</p><p><span style="color: rgb(108, 153, 187);">0x16fdfeea0</span>|+0x00: 0x202068150    -&gt; lsl::sPoolBytes+0x60</p><p><span style="color: rgb(108, 153, 187);">0x16fdfeea8</span>|+0x08: 0x202068018    -&gt; lsl::sMemoryManagerBuffer</p><p><span style="color: rgb(108, 153, 187);">0x16fdfeeb0</span>|+0x10: 0xfffffff0009d5d6</p><p><span style="color: rgb(108, 153, 187);">0x16fdfeeb8</span>|+0x18: 0x16fdfef68</p><p><span style="color: rgb(108, 153, 187);">0x16fdfeec0</span>|+0x20: 0x202068018    -&gt; lsl::sMemoryManagerBuffer</p><p><span style="color: rgb(108, 153, 187);">0x16fdfeec8</span>|+0x28: 0x2020680b0    -&gt; lsl::sAllocatorBuffer</p><p><span style="color: rgb(108, 153, 187);">0x16fdfeed0</span>|+0x30: 0x16fdff520</p><p><span style="color: rgb(108, 153, 187);">0x16fdfeed8</span>|+0x38: 0x193e36b98    -&gt; start+0x17bc</p><p>------------------------------------------------------------------------ <span style="color: rgb(108, 153, 187);">code</span> --</p><p>test`main:</p><p>   0x10000053c: stp   x29, x30, [sp, #0x30]</p><p>   0x100000540: add   x29, sp, #0x30</p><p>   0x100000544: mov   w8, #0x0                        ; =0</p><p>-&gt; 0x100000548: str   w8, [sp, #0xc]</p><p>   0x10000054c: stur  wzr, [x29, #-0x4]</p><p>   0x100000550: add   x0, sp, #0x10</p><p>   0x100000554: bl    0x100000570                     ; A::A()</p><p>   0x100000558: ldr   w0, [sp, #0xc]</p><p>   0x10000055c: mov   w8, #0xa                        ; =10</p><p>------------------------------------------------------------------------ <span style="color: rgb(108, 153, 187);">info</span> --</p><p>Process 1783 stopped</p><p>* thread #1, queue = <span style="color: rgb(126, 142, 80);">'com.apple.main-thread'</span>, stop reason = <span style="color: rgb(172, 65, 66);">instruction step over</span></p><p><span style="color: rgb(111, 111, 111);">  frame #0: </span><span style="color: rgb(229, 181, 103);">0x0000000100000548</span> test`main + 16</p><p>Target 0: (test) stopped.</p>
+  <p><span style="color: rgb(111, 111, 111);">(lldb) </span>analyze $pc</p><p>test`main:</p><p>   <span style="color: #929292;">0x100000538</span>: sub   <span style="color: rgb(81, 206, 255);">sp</span>, <span style="color: rgb(81, 206, 255);">sp</span>, #0x40</p><p>   <span style="color: #929292">0x10000053c</span>: stp   <span style="color: rgb(253, 153, 255);">x29</span>, <span style="color: rgb(162, 255, 159);">x30</span>, [<span style="color: rgb(81, 206, 255);">sp</span>, #0x30]</p><p>   <span style="color: #929292">0x100000540</span>: add   <span style="color: rgb(253, 153, 255);">x29</span>, <span style="color: rgb(81, 206, 255);">sp</span>, #0x30</p><p>   <span style="color: #929292">0x100000544</span>: mov   <span style="color: rgb(126, 142, 80);">w8</span>, #0x0             ; =0</p><p>-&gt; <span style="color: rgb(126, 142, 80);">0x100000548</span>: str   <span style="color: rgb(126, 142, 80);">w8</span>, [<span style="color: rgb(81, 206, 255);">sp</span>, #0xc]</p><p>   0x10000054c: stur  wzr, [<span style="color: rgb(253, 153, 255);">x29</span>, #-0x4]</p><p>   0x100000550: add   <span style="color: rgb(119, 210, 116);">x0</span>, <span style="color: rgb(81, 206, 255);">sp</span>, #0x10</p><p>   0x100000554: <span style="color: rgb(159, 78, 133);">bl</span>    0x100000570          ; A::A()</p><p>   0x100000558: ldr   <span style="color: rgb(119, 210, 116);">w0</span>, [<span style="color: rgb(81, 206, 255);">sp</span>, #0xc]</p><p>   0x10000055c: mov   <span style="color: rgb(126, 142, 80);">w8</span>, #0xa             ; =10</p><p>   0x100000560: str   <span style="color: rgb(126, 142, 80);">w8</span>, [<span style="color: rgb(81, 206, 255);">sp</span>, #0x18]</p><p>   0x100000564: ldp   <span style="color: rgb(253, 153, 255);">x29</span>, <span style="color: rgb(162, 255, 159);">x30</span>, [<span style="color: rgb(81, 206, 255);">sp</span>, #0x30]</p><p>   0x100000568: add   <span style="color: rgb(81, 206, 255);">sp</span>, <span style="color: rgb(81, 206, 255);">sp</span>, #0x40</p><p>   0x10000056c: <span style="color: rgb(159, 78, 133);">ret</span></p>
+  <p><span style="color: rgb(111, 111, 111);">(lldb) </span>hexdump $x9</p><p>20206cb60: <span style="color: rgb(229, 181, 103);">70</span> <span style="color: rgb(125, 214, 207);">80</span> <span style="color: rgb(125, 214, 207);">06</span> <span style="color: rgb(125, 214, 207);">02</span> <span style="color: rgb(125, 214, 207);">02</span> <span style="color: #929292;">00</span> <span style="color: #929292;">00</span> <span style="color: #929292;">00</span> <span style="color: rgb(229, 181, 103);">50</span> <span style="color: rgb(229, 181, 103);">31</span> <span style="color: rgb(229, 181, 103);">46</span> <span style="color: rgb(229, 181, 103);">50</span> <span style="color: rgb(229, 181, 103);">41</span> <span style="color: rgb(229, 181, 103);">54</span> <span style="color: rgb(229, 181, 103);">50</span> <span style="color: rgb(125, 214, 207);">0d</span> <span style="color: rgb(229, 181, 103);">p</span><span style="color: rgb(125, 214, 207);">....</span><span style="color: #929292;">...</span><span style="color: rgb(229, 181, 103);">P1FPATP</span><span style="color: rgb(125, 214, 207);">.</span></p><p><span style="color: rgb(208, 208, 208);">20206cb70: </span>00<span style="color: rgb(208, 208, 208);"> </span>00<span style="color: rgb(208, 208, 208);"> </span>00<span style="color: rgb(208, 208, 208);"> </span>00<span style="color: rgb(208, 208, 208);"> </span><span style="color: rgb(125, 214, 207);">01</span><span style="color: rgb(208, 208, 208);"> </span>00<span style="color: rgb(208, 208, 208);"> </span>00<span style="color: rgb(208, 208, 208);"> </span>00<span style="color: rgb(208, 208, 208);"> </span>00<span style="color: rgb(208, 208, 208);"> </span>00<span style="color: rgb(208, 208, 208);"> </span>00<span style="color: rgb(208, 208, 208);"> </span>00<span style="color: rgb(208, 208, 208);"> </span><span style="color: rgb(125, 214, 207);">01</span><span style="color: rgb(208, 208, 208);"> </span>00<span style="color: rgb(208, 208, 208);"> </span>00<span style="color: rgb(208, 208, 208);"> </span>00<span style="color: rgb(208, 208, 208);"> </span>....<span style="color: rgb(125, 214, 207);">.</span>.......<span style="color: rgb(125, 214, 207);">.</span>...</p><p>20206cb80: <span style="color: rgb(125, 214, 207);">90</span> <span style="color: rgb(125, 214, 207);">86</span> <span style="color: rgb(125, 214, 207);">06</span> <span style="color: rgb(125, 214, 207);">02</span> <span style="color: rgb(125, 214, 207);">02</span> <span style="color: #929292;">00</span> <span style="color: #929292;">00</span> <span style="color: #929292;">00</span> <span style="color: rgb(125, 214, 207);">e8</span> <span style="color: rgb(125, 214, 207);">f6</span> <span style="color: rgb(125, 214, 207);">df</span> <span style="color: rgb(229, 181, 103);">6f</span> <span style="color: rgb(125, 214, 207);">01</span> <span style="color: #929292;">00</span> <span style="color: #929292;">00</span> <span style="color: #929292;">00</span> <span style="color: rgb(125, 214, 207);">.....</span><span style="color: #929292;">...</span><span style="color: rgb(125, 214, 207);">...</span><span style="color: rgb(229, 181, 103);">o</span><span style="color: rgb(125, 214, 207);">.</span><span style="color: #929292;">...</span></p><p>20206cb90: <span style="color: rgb(125, 214, 207);">0d</span> <span style="color: #929292;">00</span> <span style="color: #929292;">00</span> <span style="color: rgb(125, 214, 207);">01</span> <span style="color: rgb(125, 214, 207);">1a</span> <span style="color: #929292;">00</span> <span style="color: #929292;">00</span> <span style="color: #929292;">00</span> <span style="color: rgb(125, 214, 207);">e4</span> <span style="color: rgb(229, 181, 103);">55</span> <span style="color: rgb(229, 181, 103);">6a</span> <span style="color: rgb(125, 214, 207);">03</span> <span style="color: #929292;">00</span> <span style="color: #929292;">00</span> <span style="color: #929292;">00</span> <span style="color: #929292;">00</span> <span style="color: rgb(125, 214, 207);">.</span><span style="color: #929292;">..</span><span style="color: rgb(125, 214, 207);">..</span><span style="color: #929292;">...</span><span style="color: rgb(125, 214, 207);">.</span><span style="color: rgb(229, 181, 103);">Uj</span><span style="color: rgb(125, 214, 207);">.</span><span style="color: #929292;">....</span></p>
+  <p><span style="color: rgb(111, 111, 111);">(lldb)</span> telescope $x9+0x10
+<span style="color: rgb(108, 153, 187);">0x20206cb70</span>|+0x00: 0x100000000       -> _mh_execute_header
+<span style="color: rgb(108, 153, 187);">0x20206cb78</span>|+0x08: 0x100000000       -> _mh_execute_header
+<span style="color: rgb(108, 153, 187);">0x20206cb80</span>|+0x10: 0x202068690       -> '/Users/df0/Documents/projects/lldbx/test/test'
+<span style="color: rgb(108, 153, 187);">0x20206cb88</span>|+0x18: 0x16fdff6e8       -> '/Users/df0/Documents/projects/lldbx/test/test'
+<span style="color: rgb(108, 153, 187);">0x20206cb90</span>|+0x20: 0x1a0100000d
+<span style="color: rgb(108, 153, 187);">0x20206cb98</span>|+0x28: 0x36a55e4
+<span style="color: rgb(108, 153, 187);">0x20206cba0</span>|+0x30: 0x7e80500000f0500
+<span style="color: rgb(108, 153, 187);">0x20206cba8</span>|+0x38: 0x7e80000000f0000
+</p>
+<p><span style="color: rgb(111, 111, 111);">(lldb)</span> xinfo $x9
+Symbol:      lsl::sPoolBytes+0x4a70
+Page:        0x202068000 -> 0x20208c000 (size = 0x24000)
+Mapped:      Yes
+Permissions: r--
+Module:      /usr/lib/dyld
+Section:     __allocator
+</p>
+<p><span style="color: rgb(111, 111, 111);">(lldb) </span>poffsets A</p><p>+0x000 <span style="color: rgb(159, 78, 133);">A</span> {</p><p>&nbsp;&nbsp;+0x008 <span style="color: rgb(126, 142, 80);">int&nbsp;&nbsp;&nbsp;&nbsp;</span> num1</p><p>&nbsp;&nbsp;+0x00c <span style="color: rgb(126, 142, 80);">int&nbsp;&nbsp;&nbsp;&nbsp;</span> num2</p><p>&nbsp;&nbsp;+0x010 <span style="color: rgb(126, 142, 80);">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>  classB</p><p>&nbsp;&nbsp;&nbsp;&nbsp;+0x010 <span style="color: rgb(126, 142, 80);">unsigned int</span> b1</p><p>&nbsp;&nbsp;&nbsp;&nbsp;+0x014 <span style="color: rgb(126, 142, 80);">unsigned int</span> b2</p><p>};</p>
+</pre>
+        </div>
+      </div>
+    </section>
+    <footer class="text-center text-gray-500 text-sm mt-8">
+      <p>Get started: Load <code>lldbx.py</code> in LLDB and type <code>lldbx</code> for help.</p>
+      <p class="mt-2">Open source. No dependencies. Designed for Apple platforms.</p>
+    </footer>
+  </div>
+</body>
+</html>
